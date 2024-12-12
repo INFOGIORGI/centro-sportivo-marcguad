@@ -65,4 +65,12 @@ public class Societa {
         }
         return false;
     }
+
+    public Paziente getSoci(String codiceSocio){
+        if(soci.containsKey(codiceSocio)){
+            return soci.get(codiceSocio);
+        }else{
+            return null;
+        }
+    }
 }
