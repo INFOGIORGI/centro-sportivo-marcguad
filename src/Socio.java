@@ -5,6 +5,9 @@ public class Socio{
     private String cognome;
     private String codiceSocio;
     private HashMap<String,Istruttore> lista_istruttori;
+    private String IstruttoreAssegnato;
+
+    
     public Socio(String nome, String cognome, String codiceSocio) {
         this.nome = nome;
         this.cognome = cognome;
@@ -19,6 +22,10 @@ public class Socio{
 
     public Socio getSocio(){
         return this;
+    }
+
+    public Medico getIstruttoreAssegnato() {
+        return istruttoreAssegnato;
     }
     
 }
