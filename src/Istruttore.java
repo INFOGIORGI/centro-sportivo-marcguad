@@ -12,10 +12,6 @@ public class Istruttore {
         
     }
 
-    public int getLungh(){
-        return lista_soci.size();
-    }
-
     public Istruttore getIstruttore(){
         return this;
     }

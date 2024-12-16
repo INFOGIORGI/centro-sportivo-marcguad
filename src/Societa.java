@@ -1,11 +1,15 @@
 import java.util.HashMap;
+import java.util.Scanner;
+import java.io.IOException;
 
 public class Societa {
     private HashMap<String,Socio> soci;
     private HashMap<String,Itruttore> istruttori;
+    
     public Societa(){
         soci=new HashMap<>();
-    }
+        isttruttori=new HashMap<>();
+        }
 
 
     public boolean aggiungiSocio(String nome,String Cognome,String codice){
@@ -20,7 +24,7 @@ public class Societa {
 
 
     public boolean rimuoviSocio(String codiceSocio){
-        if(soci.containsKey(codiceSocio)==true && soci.get(codiceSocio).getLungh()==0){
+        if(soci.containsKey(codiceSocio)==true && soci.get(codiceSocio)==0){
             soci.remove(codiceSocio);
             return true;
         }
@@ -39,7 +43,7 @@ public class Societa {
 
 
     public boolean rimuoviIstruttore(String codiceIstruttore){
-        if(istruttori.containsKey(codiceIstruttore)==true && istruttori.get(codiceIstruttori).getLungh()==0){
+        if(istruttori.containsKey(codiceIstruttore)==true && istruttori.get(codiceIstruttori)==0){
             istruttori.remove(codiceIstruttore);
             return true;
         }
@@ -51,15 +55,15 @@ public class Societa {
             return false;
         } else {
             Istruttore i = istruttori.get(codiceIstruttore);
-            Socio s = pazienti.get(codiceSoci);
-            i.setMedicoAssegnato(s); 
-            s.addPaziente(i); 
+            Socio s = soci.get(codiceSoci);
+            i.setIstruttoreAssegnato(s); 
+            s.aggiungiSocio(i); 
             return true;
         }
     }
 
     public boolean rimuoviAssegnazione(String codiceIstruttore, String codiceSocio){
-        if(istruttori.containsKey(codiceIstruttore)==true && istruttori.get(codiceIstruttori).getLungh()==0){
+        if(istruttori.containsKey(codiceIstruttore)==true && istruttori.get(codiceIstruttori)==0){
             istruttori.remove(codiceIstruttore);
             return true;
         }
@@ -73,4 +77,43 @@ public class Societa {
             return null;
         }
     }
+    
+    public void leggiFile(String path){
+        File file = new File (path);
+        Scanner scanner = new Scanner(file);
+        while(scanner.hasNextLine()){
+            String riga = scanner.nextLine();
+            String [] rigaSplittata = riga.split(";");
+            if(rigaSplittata[0].equals("S")){
+                aggiungiSocio(rigaSplittata[1],rigaSplittata[2],rigaSplittata[3]);
+
+            }
+            else if(rigaSplittata[0].equals("I")){
+                aggiungiIstruttore(rigaSplittata[1],rigaSplittata[2],rigaSplittata[3]);
+
+            }
+            else if(rigaSplittata[0].equals("AT")){
+                aggiungiAttivita(rigaSplittata[1],rigaSplittata[2],rigaSplittata[3],rigaSplittata[4],rigaSplittata[5]);
+
+            }
+
+        }
+    }
+    
+    
+    public void scriviFile(String path) {
+        FileWriter myWriter = null; // Dichiarazione del FileWriter
+        try {
+            myWriter = new FileWriter(path); // Inizializzazione del FileWriter
+            for (Socio s : soci.values()) {
+                // Creazione della stringa da scrivere nel file
+                String getSoci = "S;" + s.getNome() + ";" + s.getCognome() + ";" + s.getCodiceSocio() + "\n";
+                myWriter.write(getSoci); // Scrittura nel file
+            }
+        } catch (IOException e) {
+            
+        }
+    }
+
+
 }

@@ -28,7 +28,7 @@ Il software deve essere realizzato attraverso la classe principale **CentroSport
    - Dato il codice di un istruttore, è possibile ottenere la lista dei soci assegnati tramite il metodo `getSoci()` della classe CentroSportivo che restituisce una stringa contenente tutti i soci (uno per riga).
    
 4. **Attività**
-	- E' possibile aggiungere delle attività individuali al centro sportivo. Un' attività prevede un socio, un instruttore, una data, un orario di inizio, un orario di fine e una descrizione.
+	E' possibile aggiungere delle attività individuali al centro sportivo. Un' attività prevede un socio, un instruttore, una data, un orario di inizio, un orario di fine e una descrizione.
 	- E' possibile aggiungere una nuova attività se e solo se il socio è associato al relativo istruttore. In caso contrario il metodo ritornerà il valore `false`.
 	- `aggiungiAttivita()`, che riceve come parametri il **codice socio**, il **codice istruttore**, la **data**, l' **orario di inizio** e l' **orario di fine**.  
 	

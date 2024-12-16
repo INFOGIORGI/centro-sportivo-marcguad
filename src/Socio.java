@@ -16,10 +16,6 @@ public class Socio{
     }
 
 
-    public int getLungh(){
-        return lista_istruttori.size();
-    }
-
     public Socio getSocio(){
         return this;
     }
@@ -32,4 +28,8 @@ public class Socio{
         return codiceSocio;
     }
     
+    public void setIstruttoreAssegnato(Istruttore i) {
+        this.IstruttoreAssegnatoAssegnato = IstruttoreAssegnato;
+    }
+
 }
