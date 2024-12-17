@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.IOException;
+import java.io.FileWriter;
 
 public class Societa {
     private HashMap<String,Socio> soci;
@@ -13,7 +14,7 @@ public class Societa {
 
 
     public boolean aggiungiSocio(String nome,String Cognome,String codice){
-        if (!soci.containsKey(codice)) {
+        if (soci.containsKey(codice)) {
            
         Socio s = new Socio(nome, Cognome, codice);
         soci.put(codice,s);
@@ -32,7 +33,7 @@ public class Societa {
     }
 
     public boolean aggiungiIstruttore(String nome,String Cognome,String codiceIstruttore){
-        if (!istruttori.containsKey(codiceIstruttore)) {
+        if (istruttori.containsKey(codiceIstruttore)) {
            
         Istruttore i = new Istruttore(nome, Cognome, codiceIstruttore);
         istruttori.put(codiceIstruttore,i);
@@ -51,7 +52,7 @@ public class Societa {
     }
 
     public boolean assegnaIstruttore(String codiceSoci, String codiceIstruttore) {
-        if (!istruttori.containsKey(codiceIstruttore) || !soci.containsKey(codiceSoci) || soci.get(codiceSoci).getIstruttoreAssegnato() != null) {
+        if (istruttori.containsKey(codiceIstruttore) || !soci.containsKey(codiceSoci) || soci.get(codiceSoci).getIstruttoreAssegnato() != null) {
             return false;
         } else {
             Istruttore i = istruttori.get(codiceIstruttore);
